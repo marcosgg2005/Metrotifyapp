@@ -2,6 +2,123 @@ import requests
 import uuid
 import re
 
+
+class Usuario:
+    def __init__(self, nombre, correo, tipo_usuario,id=None):
+        self.nombre = nombre
+        self.correo = correo
+        self.tipo_usuario = tipo_usuario
+        self.likes = []  # Lista de IDs de usuarios que dieron like
+        self.like_count = 0  # Contador de likes
+
+        if id is None:
+            self.id = str(uuid.uuid4())  # Genera un ID único
+        else:
+            self.id = id
+
+    def add_like(self, user_id):
+        if user_id not in self.likes:
+            self.likes.append(user_id)
+            self.like_count += 1
+
+    def remove_like(self, user_id):
+        if user_id in self.likes:
+            self.likes.remove(user_id)
+            self.like_count -= 1
+
+class Album:
+    def __init__(self, id, name, description, cover, published, genre, artist, tracklist):
+        self.id = id
+        self.name = name
+        self.description = description
+        self.cover = cover
+        self.published = published
+        self.genre = genre
+        self.artist = artist
+        self.tracklist = tracklist
+        self.likes = []  # Lista de IDs de usuarios que dieron like
+        self.like_count = 0  # Contador de likes
+    def to_string(self):
+        return f"{self.nombre},{self.correo},{self.tipo_usuario},{self.like_count}"
+
+
+class Album:
+    def __init__(self, id, name, description, cover, published, genre, artist, tracklist):
+        self.id = id
+        self.name = name
+        self.description = description
+        self.cover = cover
+        self.published = published
+        self.genre = genre
+        self.artist = artist
+        self.tracklist = tracklist
+        self.likes = []  # Lista de IDs de usuarios que dieron like
+        self.like_count = 0  # Contador de likes
+
+    def add_like(self, user_id):
+        if user_id not in self.likes:
+            self.likes.append(user_id)
+            self.like_count += 1
+
+    def remove_like(self, user_id):
+        if user_id in self.likes:
+            self.likes.remove(user_id)
+            self.like_count -= 1
+
+    def to_string(self):
+        tracklist_string = "\n".join([track.to_string() for track in self.tracklist])
+        return f"{self.id},{self.name},{self.description},{self.cover},{self.published},{self.genre},{self.artist}\n{tracklist_string}"
+
+
+class Track:
+    def __init__(self, id, name, duration, link):
+        self.id = id
+        self.name = name
+        self.duration = duration
+        self.link = link
+        self.likes = []  # Lista de IDs de usuarios que dieron like
+        self.like_count = 0  # Contador de likes
+
+    def add_like(self, user_id):
+        if user_id not in self.likes:
+            self.likes.append(user_id)
+            self.like_count += 1
+
+    def remove_like(self, user_id):
+        if user_id in self.likes:
+            self.likes.remove(user_id)
+            self.like_count -= 1
+
+    def to_string(self):
+        return f"{self.id},{self.name},{self.duration},{self.link},{self.like_count}"
+
+
+class Playlist:
+    def __init__(self, id, name, description, creator, tracks):
+        self.id = id
+        self.name = name
+        self.description = description
+        self.creator = creator
+        self.tracks = tracks
+        self.likes = []  # Lista de IDs de usuarios que dieron like
+        self.like_count = 0  # Contador de likes
+
+    def add_like(self, user_id):
+        if user_id not in self.likes:
+            self.likes.append(user_id)
+            self.like_count += 1
+
+    def remove_like(self, user_id):
+        if user_id in self.likes:
+            self.likes.remove(user_id)
+            self.like_count -= 1
+
+    def to_string(self):
+        tracks_string = ",".join([track.id for track in self.tracks])
+        return f"{self.id},{self.name},{self.description},{self.creator},{tracks_string},{self.like_count}"
+        
+
+
 # Mapeo de tipos de usuario
 tipo_usuario_map = {
     "Escucha": "listener",
@@ -13,7 +130,6 @@ tipo_usuario_map_inverso = {
     "listener": "Escucha",
     "musician": "Músico"
 }
-
 class Metrotify:
     def __init__(self):
         self.usuarios = []
@@ -67,56 +183,79 @@ class Metrotify:
                 # Verificar si la playlist ya existe en la lista
                 if not any(p.id == playlist["id"] for p in self.playlists):
                     self.playlists.append(Playlist(playlist["id"], playlist["name"], playlist["description"], playlist["creator"], playlist["tracks"]))
-    def likes_to_string(self, likes):
-        return ','.join(likes)
 
-    def string_to_likes(self, string):
-        return string.split(',')
-    
+    def guardar_objeto(self, objeto, archivo):
+        # Guarda el objeto en el archivo correspondiente
+        # Verificar el tipo de objeto y llamar al método to_string correspondiente
+        if isinstance(objeto, Album):
+            data = objeto.to_string()
+            # Escribir los datos en el archivo
+            with open(archivo, 'a', encoding='utf-8') as f:
+                f.write(data + "\n")
+
+                    
+   
     
     def guardar_usuarios(self):
-     with open('usuarios.txt', 'w') as f:
-        for usuario in self.usuarios:
-            likes_string = ','.join(usuario.likes)
-            f.write(f"{usuario.id},{usuario.nombre},{usuario.correo},{usuario.tipo_usuario},{likes_string}\n")
+        with open('usuarios.txt', 'w', encoding='utf-8', errors='ignore') as f:
+            for usuario in self.usuarios:
+                f.write(f"{usuario.id},{usuario.nombre},{usuario.correo},{usuario.tipo_usuario}\n")
 
     def cargar_usuarios(self):
         try:
-            with open('usuarios.txt', 'r') as f:
+            with open('usuarios.txt', 'r', encoding='utf-8', errors='ignore') as f:
                 for linea in f.readlines():
-                    id, nombre, correo, tipo_usuario, likes_string = linea.strip().split(',')
-                    likes = likes_string.split(',')
-                    self.usuarios.append(Usuario(id, nombre, correo, tipo_usuario, likes))
+                    id, nombre, correo, tipo_usuario = linea.strip().split(',')
+                    self.usuarios.append(Usuario(nombre, correo, tipo_usuario, id))
         except FileNotFoundError:   
             pass
-
     def guardar_albums(self):
-        with open('albums.txt', 'w') as f:
+        with open('albums.txt', 'w', encoding='utf-8', errors='ignore') as f:
             for album in self.albums:
-                likes_string = ','.join(album.likes)
-                f.write(f"{album.id},{album.name},{album.description},{album.cover},{album.published},{album.genre},{album.artist},{likes_string}\n")
+                f.write(f"{album.id},{album.name},{album.description},{album.cover},{album.published},{album.genre},{album.artist}\n")
                 for track in album.tracklist:
                     f.write(f"\t{track.id},{track.name},{track.duration},{track.link}\n")
+                # Guardar los likes del álbum
+                for like in album.likes:
+                    f.write(f"\t\t{like}\n")
 
     def cargar_albums(self):
         try:
-            with open('albums.txt', 'r') as f:
+            with open('albums.txt', 'r', encoding='utf-8', errors='ignore') as f:
                 album = None
                 for linea in f.readlines():
                     datos = linea.strip().split(',')
-                    if len(datos) == 8:
-                        # This is an album line
-                        id, name, description, cover, published, genre, artist, likes_string = datos
-                        likes = likes_string.split(',')
-                        album = Album(id, name, description, cover, published, genre, artist, likes)
+                    if len(datos) == 7:
+                        id, name, description, cover, published, genre, artist = datos
+                        album = Album(id, name, description, cover, published, genre, artist, [])
                         self.albums.append(album)
                     elif len(datos) == 4 and album is not None:
-                        # This is a track line
                         id, name, duration, link = datos
                         album.tracklist.append(Track(id, name, duration, link))
-        except FileNotFoundError:
+                    elif len(datos) == 1 and album is not None:
+                        # Cargar los likes del álbum
+                        album.likes.append(datos[0])
+                        album.like_count += 1
+        except FileNotFoundError:   
             pass
-            
+
+
+    def guardar_playlists(self):
+        with open('playlists.txt', 'w', encoding='utf-8', errors='ignore') as f:
+            for playlist in self.playlists:
+                tracks_string = ','.join(playlist.tracks)
+                f.write(f"{playlist.id},{playlist.name},{playlist.description},{playlist.creator},{tracks_string}\n")
+
+    def cargar_playlists(self):
+        try:
+            with open('playlists.txt', 'r', encoding='utf-8', errors='ignore') as f:
+                for linea in f.readlines():
+                    id, name, description, creator, tracks_string = linea.strip().split(',')
+                    tracks = tracks_string.split(',')
+                    self.playlists.append(Playlist(id, name, description, creator, tracks))
+        except FileNotFoundError:   
+            pass
+
     def registrar_usuario_interactivo(self):
         print("Por favor, llena los siguientes campos para registrarte:")
         nombre = input("Nombre (o Nombre artístico): ")
@@ -162,66 +301,90 @@ class Metrotify:
             print("Usuario no encontrado. Por favor, intentalo de nuevo.")
             return None
 
-
     def menu_usuario(self, usuario):
-            while True:
-                print("Bienvenido a METROTIFY, " + usuario.nombre)
-                print("1. Ver perfil")
-                
-                # Aquí usamos el mapeo inverso para hacer la comparación correcta
-                if tipo_usuario_map_inverso[usuario.tipo_usuario] == "Músico":
-                    print("2. Crear álbum")
-                elif tipo_usuario_map_inverso[usuario.tipo_usuario] == "Escucha":
-                    print("2. Crear playlist")
-                print("3. Buscar")
-                print("4. Salir")
-                opcion = input("Por favor, selecciona una opción: ")
+        while True:
+            print("Bienvenido a METROTIFY, " + usuario.nombre)
+            print("1. Ver perfil")
             
-                if opcion == "1":
-                    self.ver_perfil(usuario)
-                elif opcion == "2":
-                    if tipo_usuario_map_inverso[usuario.tipo_usuario] == "Músico":
-                        self.crear_album(usuario)
-                    elif tipo_usuario_map_inverso[usuario.tipo_usuario] == "Escucha":
-                        self.crear_playlist(usuario)
-                elif opcion == "3":
-                    tipo_busqueda = input("Introduce el tipo de búsqueda (usuario, album, cancion, playlist): ")
-                    termino_busqueda = input("Introduce el término de búsqueda: ")
-                    resultados = self.buscar(tipo_busqueda, termino_busqueda)
-                    if resultados:
-                        print(f"{tipo_busqueda} encontrado:")
-                        if tipo_busqueda == "album":
-                            for i, album in enumerate(resultados, 1):
-                                print(f"{i}. {album.name}")
-                            indice = int(input("Selecciona el número del álbum que quieres ver: ")) - 1
-                            album_seleccionado = resultados[indice]
-                            print("Canciones en el álbum seleccionado:")
-                            for track in album_seleccionado.tracklist:
-                                print((track.name, track.link))
-                            # Agregar opción para dar like o dislike al álbum
+            # Aquí usamos el mapeo inverso para hacer la comparación correcta
+            if tipo_usuario_map_inverso[usuario.tipo_usuario] == "Músico":
+                print("2. Crear álbum")
+            elif tipo_usuario_map_inverso[usuario.tipo_usuario] == "Escucha":
+                print("2. Crear playlist")
+            print("3. Buscar")
+            print("4. Salir")
+            opcion = input("Por favor, selecciona una opción: ")
+        
+            if opcion == "1":
+                self.ver_perfil(usuario)
+            elif opcion == "2":
+                if tipo_usuario_map_inverso[usuario.tipo_usuario] == "Músico":
+                    self.crear_album(usuario)
+                elif tipo_usuario_map_inverso[usuario.tipo_usuario] == "Escucha":
+                    self.crear_playlist(usuario)
+            elif opcion == "3":
+                tipo_busqueda = input("Introduce el tipo de búsqueda (usuario, album, cancion, playlist): ")
+                termino_busqueda = input("Introduce el término de búsqueda: ")
+                resultados = self.buscar(tipo_busqueda, termino_busqueda)
+                if resultados:
+                    print(f"{tipo_busqueda} encontrado:")
+                    if tipo_busqueda == "album":
+                        for i, album in enumerate(resultados, 1):
+                            print(f"{i}. {album.name}")
+                        indice = int(input("Selecciona el número del álbum que quieres ver: ")) - 1
+                        album_seleccionado = resultados[indice]
+                        print("Canciones en el álbum seleccionado:")
+                        for track in album_seleccionado.tracklist:
+                            print((track.name, track.link))
+                        # Agregar opción para dar like o dislike al álbum
+                        if usuario.id in album_seleccionado.likes:
+                            opcion_like = input("¿Quieres quitar tu 'like' a este álbum? (s/n): ")
+                            if opcion_like.lower() == 's':
+                                album_seleccionado.remove_like(usuario.id)  # Aquí se llama a remove_like
+                                print("Has quitado tu 'like' a este álbum.")
+                                self.guardar_albums()  # Guardar los álbumes después de modificar los 'likes'
+                        else:
                             opcion_like = input("¿Quieres dar 'like' a este álbum? (s/n): ")
                             if opcion_like.lower() == 's':
-                                self.dar_like(usuario.id, album_seleccionado)
-                            elif opcion_like.lower() == 'n':
-                                self.quitar_like(usuario.id, album_seleccionado)
+                                album_seleccionado.add_like(usuario.id)  # Aquí se llama a add_like
+                                print("Has dado 'like' a este álbum.")
+                                self.guardar_albums()  # Guardar los álbumes después de modificar los 'likes'
+                    else:
+                        for i, resultado in enumerate(resultados, 1):
+                            print(f"{i}. {resultado.nombre if hasattr(resultado, 'nombre') else resultado[0]}")
+                        indice = int(input("Selecciona el número del objeto que quieres ver: ")) - 1
+                        objeto_seleccionado = resultados[indice]
+                        # Agregar opción para dar like o dislike al objeto
+                        if usuario.id in objeto_seleccionado.likes:
+                            opcion_like = input("¿Quieres quitar tu 'like' a este objeto? (s/n): ")
+                            if opcion_like.lower() == 's':
+                                objeto_seleccionado.remove_like(usuario.id)
+                                print("Has quitado tu 'like' a este objeto.")
+                                self.guardar_albums()  # Guardar los álbumes después de modificar los 'likes'
                         else:
-                            for i, resultado in enumerate(resultados, 1):
-                                print(f"{i}. {resultado.nombre if hasattr(resultado, 'nombre') else resultado[0]}")
-                            indice = int(input("Selecciona el número del objeto que quieres ver: ")) - 1
-                            objeto_seleccionado = resultados[indice]
-                            # Agregar opción para dar like o dislike al objeto
                             opcion_like = input("¿Quieres dar 'like' a este objeto? (s/n): ")
                             if opcion_like.lower() == 's':
-                                self.dar_like(usuario.id, objeto_seleccionado)
-                            elif opcion_like.lower() == 'n':
-                                self.quitar_like(usuario.id, objeto_seleccionado)
-                    else:
-                        print(f"{tipo_busqueda} no encontrado.")
-                elif opcion == "4":
-                    print("Has cerrado tu sesión. ¡Hasta luego!")
-                    break
+                                objeto_seleccionado.add_like(usuario.id)
+                                print("Has dado 'like' a este objeto.")
+                                self.guardar_albums()  # Guardar los álbumes después de modificar los 'likes'
                 else:
-                    print("Opción no válida. Por favor, intenta de nuevo.")
+                    print(f"{tipo_busqueda} no encontrado.")
+            elif opcion == "4":
+                print("Has cerrado tu sesión. ¡Hasta luego!")
+
+
+
+    def dar_like(self, usuario, objeto):
+        if usuario.id not in objeto.likes:
+            objeto.add_like(usuario.id)
+            print("Has dado 'like' a este objeto.")
+            self.guardar_objeto(objeto, 'albums.txt')  # Guardar el objeto después de dar/quitar "like"
+
+    def quitar_like(self, usuario, objeto):
+        if usuario.id in objeto.likes:
+            objeto.remove_like(usuario.id)
+            print("Has quitado tu 'like' a este objeto.")
+            self.guardar_objeto(objeto, 'albums.txt')  # Guardar el objeto después de dar/quitar "like"
 
 
     def buscar(self, tipo, termino):
@@ -265,23 +428,6 @@ class Metrotify:
 
             return resultados
 
-    def dar_like(self, usuario_id, objeto):
-        # Si el usuario ya ha dado "like", mostrar un mensaje y ofrecer la opción de quitar el "like"
-        if usuario_id in objeto.likes:
-            print("Ya has dado 'like' a este objeto.")
-            opcion = input("¿Quieres quitar tu 'like'? (s/n): ")
-            if opcion.lower() == 's':
-                self.quitar_like(usuario_id, objeto)
-        else:
-            objeto.like(usuario_id)
-            print("Has dado 'like' exitosamente.")
-
-    def quitar_like(self, usuario_id, objeto):
-        if usuario_id not in objeto.likes:
-            print("No has dado 'like' a este objeto.")
-        else:
-            objeto.dislike(usuario_id)
-            print("Has quitado tu 'like' exitosamente.")
             
     def crear_playlist(self, usuario):
         print("Por favor, introduce los detalles de la playlist:")
@@ -445,109 +591,56 @@ class Metrotify:
                 if track.id == id:
                     return track.name, track.link
         return None
-        
-class Usuario:
-    def __init__(self, nombre, correo, tipo_usuario, id=None):
-        self.nombre = nombre
-        self.correo = correo
-        self.tipo_usuario = tipo_usuario
-        if id is None:
-            self.id = str(uuid.uuid4())  # Genera un ID único
-        else:
-            self.id = id
-        self.likes = []  # Lista de IDs de usuarios que han dado "like"
+            
+    def guardar_tracks(self):
+     with open('tracks.txt', 'w') as f:
+        for track in self.tracks:
+            likes_string = ','.join(track.likes)
+            f.write(f"{track.id},{track.name},{track.duration},{track.link},{likes_string}\n")
+            
+    def cargar_tracks(self):
+        try:
+            with open('tracks.txt', 'r') as f:
+                for linea in f.readlines():
+                    id, name, duration, link, likes_string = linea.strip().split(',')
+                    likes = likes_string.split(',')
+                    self.tracks.append(Track(id, name, duration, link, likes))
+        except FileNotFoundError:   
+            pass
 
-    def like(self, usuario_id):
-        if usuario_id not in self.likes:
-            self.likes.append(usuario_id)
 
-    def dislike(self, usuario_id):
-        if usuario_id in self.likes:
-            self.likes.remove(usuario_id)
-
-class Album:
-    def __init__(self, id, name, description, cover, published, genre, artist, tracklist):
-        self.id = id
-        self.name = name
-        self.description = description
-        self.cover = cover
-        self.published = published
-        self.genre = genre
-        self.artist = artist
-        self.tracklist = tracklist
-        self.likes = []  # Lista de IDs de usuarios que han dado "like"
-
-    def like(self, usuario_id):
-        if usuario_id not in self.likes:
-            self.likes.append(usuario_id)
-
-    def dislike(self, usuario_id):
-        if usuario_id in self.likes:
-            self.likes.remove(usuario_id)
-
-class Track:
-    def __init__(self, id, name, duration, link):
-        self.id = id
-        self.name = name
-        self.duration = duration
-        self.link = link
-        self.likes = []  # Lista de IDs de usuarios que han dado "like"
-
-    def like(self, usuario_id):
-        if usuario_id not in self.likes:
-            self.likes.append(usuario_id)
-
-    def dislike(self, usuario_id):
-        if usuario_id in self.likes:
-            self.likes.remove(usuario_id)
-
-class Playlist:
-    def __init__(self, id, name, description, creator, tracks):
-        self.id = id
-        self.name = name
-        self.description = description
-        self.creator = creator
-        self.tracks = tracks
-        self.likes = []  # Lista de IDs de usuarios que han dado "like"
-
-    def like(self, usuario_id):
-        if usuario_id not in self.likes:
-            self.likes.append(usuario_id)
-
-    def dislike(self, usuario_id):
-        if usuario_id in self.likes:
-            self.likes.remove(usuario_id)
 
 if __name__ == "__main__":
-    app = Metrotify()
-    app.cargar_usuarios()
-    app.cargar_albums()
-    app.cargar_playlists()
-    app.get_users()
-    app.get_albums()
-    app.get_playlists()
 
-    usuario = None  # Variable para rastrear el usuario actual
+        app = Metrotify()
+        app.cargar_usuarios()
+        app.cargar_albums()
+        app.cargar_playlists()
+        app.get_users()
+        app.get_albums()
+        app.get_playlists()
 
-    while True:
-        if usuario is None:  # Si no hay un usuario actual, mostrar el menú de inicio de sesión/registro
-            print("Bienvenido a METROTIFY")
-            print("1. Iniciar sesión")
-            print("2. Registrarse")
-            print("3. Salir")
-            opcion = input("Por favor, selecciona una opción (1, 2 o 3): ")
+        usuario = None  # Variable para rastrear el usuario actual
 
-            if opcion == "1":
-                usuario = app.iniciar_sesion()
+        while True:
+            if usuario is None:  # Si no hay un usuario actual, mostrar el menú de inicio de sesión/registro
+                print("Bienvenido a METROTIFY")
+                print("1. Iniciar sesión")
+                print("2. Registrarse")
+                print("3. Salir")
+                opcion = input("Por favor, selecciona una opción (1, 2 o 3): ")
 
-            elif opcion == "2":
-                usuario = app.registrar_usuario_interactivo()
+                if opcion == "1":
+                    usuario = app.iniciar_sesion()
 
-            elif opcion == "3":
-                print("Gracias por usar METROTIFY. ¡Hasta luego!")
-                break
-            else:
-                print("Opción no válida. Por favor, intenta de nuevo.")
-        else:  # Si hay un usuario actual, mostrar el menú de usuario
-            app.menu_usuario(usuario)
-            usuario = None 
+                elif opcion == "2":
+                    usuario = app.registrar_usuario_interactivo()
+
+                elif opcion == "3":
+                    print("Gracias por usar METROTIFY. ¡Hasta luego!")
+                    break
+                else:
+                    print("Opción no válida. Por favor, intenta de nuevo.")
+            else:  # Si hay un usuario actual, mostrar el menú de usuario
+                app.menu_usuario(usuario)
+                usuario = None

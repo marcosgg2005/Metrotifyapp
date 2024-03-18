@@ -2462,7 +2462,7 @@ Amet cinis clementia vitium testimonium creber vox spargo tyrannus tero. Vilicus
 	f7643164-b445-4df4-b448-8ebbc6c11edb,zowie gee as,03:56,https://soundcloud.com/jaxonmase/cola-x-ferrari-horses?in=luk_music/sets/ibiza-techno-house-2024-summer-mix&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing
 	ffa3dfc8-9b1c-42e4-867f-261559bc21a4,pigsty swiftly however,05:19,https://soundcloud.com/luk_music/elderbrook-dababy-why-do-we-shake-in-the-cold-practice-luk-mashup-remix?in=luk_music/sets/ibiza-techno-house-2024-summer-mix&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing
 	f2575884-3910-4650-977d-71906f153b68,usually pro easily,01:48,https://soundcloud.com/ginchiestrecords/ginchy-gxd-feat-yasmin-jane-as-the-rush-comes-radio-edit?in=luk_music/sets/ibiza-techno-house-2024-summer-mix&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing
-4a608767-9f3f-44d0-8599-097ef464bde0,Estrella,album de mora ,https://www.google.com/url?sa=i&url=https%3A%2F%2Fopen.spotify.com%2Fintl-es%2Falbum%2F0SoJvPHbKVhvmVJOp3kzp3&psig=AOvVaw2eKbexRAAXwLfuTLbATcHC&ust=1710803790359000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCJDj__a2_IQDFQAAAAAdAAAAABAD,2023,reggaeton,Marcos
-	58518650-5c08-47d3-9cc2-44914f15d0b2,pide,3:28,https://www.youtube.com/watch?v=dXAutwSHPCI&list=PLxA687tYuMWh9zjToBqkluT-Ln9vXRVoV&index=11
-	07248310-30f0-4438-8a06-942f9fe5946d,Un Deseo,3:40,https://www.youtube.com/watch?v=LAA6_6eFxnY&list=PLxA687tYuMWh9zjToBqkluT-Ln9vXRVoV&index=12
-	3758ecb3-1eea-4bd4-ba07-47290371d81f,Reina ,3:23,https://www.youtube.com/watch?v=KAmtHvYRxIg&list=PLxA687tYuMWh9zjToBqkluT-Ln9vXRVoV&index=5
+c4e8bd6e-1fa0-4da7-b721-3c749f3594a3,estrella,album de mora,https://i.scdn.co/image/ab67616d0000b2734cc96ed1e38fa517608c2fb0,2023,reggaeton,marcos
+	6c4d2223-fc2b-44d0-8c61-da9b6d397e7a,pide,https://www.youtube.com/watch?v=dXAutwSHPCI&list=PLxA687tYuMWh9zjToBqkluT-Ln9vXRVoV&index=11,https://www.youtube.com/watch?v=dXAutwSHPCI&list=PLxA687tYuMWh9zjToBqkluT-Ln9vXRVoV&index=11
+	ad7d377d-e791-41b7-99d2-ab9600f547d1,un deseo ,3:33,https://www.youtube.com/watch?v=LAA6_6eFxnY&list=PLxA687tYuMWh9zjToBqkluT-Ln9vXRVoV&index=12
+		ef8860e9-afdd-4754-97fb-9ec53efe4a38

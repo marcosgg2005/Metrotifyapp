@@ -3,99 +3,99 @@ listener,8a6390a0-eda1-4161-81a1-6576edc72c2b,Pedro Urbina Ortega,pedro70@unimet
 musician,c060b6ea-4418-4521-88c8-e430cf91a0d1,Gabriela ,gabriela.urenamalave49@unimet.edu.ve
 musician,f2525fc3-d5e0-472d-920f-6446fd766892,Enrique ,enrique_prietocarrasco59@unimet.edu.ve
 musician,18342a8f-cab1-4401-9874-a2c232d006f4,Patricio ,patricio.salazarlugo69@unimet.edu.ve
-musician,605347b1-053e-4c1d-a15c-23f7c9a6319a,RubÈn ,ruben_alvaradomadrigal@unimet.edu.ve
-musician,5abdd366-6df3-4d51-9f1e-aa4f88e73b66,MarÌa Eugenia ,mariaeugenia.figueroacanales@unimet.edu.ve
+musician,605347b1-053e-4c1d-a15c-23f7c9a6319a,Rub√©n ,ruben_alvaradomadrigal@unimet.edu.ve
+musician,5abdd366-6df3-4d51-9f1e-aa4f88e73b66,Mar√≠a Eugenia ,mariaeugenia.figueroacanales@unimet.edu.ve
 musician,4185be1e-1219-45da-b0b6-89a337454ad1,Vicente ,vicente.yanezalicea@unimet.edu.ve
-musician,ca88c7f9-9585-43e7-80d3-a48a85b856c1,VÌctor ,victor55@unimet.edu.ve
-musician,27cc7912-e4cd-4705-9f4a-7d39232f2696,BenjamÌn ,benjamin53@unimet.edu.ve
+musician,ca88c7f9-9585-43e7-80d3-a48a85b856c1,V√≠ctor ,victor55@unimet.edu.ve
+musician,27cc7912-e4cd-4705-9f4a-7d39232f2696,Benjam√≠n ,benjamin53@unimet.edu.ve
 listener,c9966532-31f3-43b6-9e68-a2f9c42de335,Lorenzo Colunga Tejada,lorenzo.colungatejada@unimet.edu.ve
 musician,b1365259-e3d1-4aa9-a167-c1760a1da5f6,Guillermo ,guillermo_brionessauceda27@unimet.edu.ve
-listener,b76c4e95-384c-4808-be79-aabf13d1ba7f,Virginia Rold·n Alvarado,virginia_roldanalvarado9@unimet.edu.ve
+listener,b76c4e95-384c-4808-be79-aabf13d1ba7f,Virginia Rold√°n Alvarado,virginia_roldanalvarado9@unimet.edu.ve
 musician,e448f4fa-0bf0-4409-a991-d485fd4de942,Gloria ,gloria_menamuro@unimet.edu.ve
 listener,4e851ce1-5227-490c-8a8b-e2415dbc9985,Ignacio Rosario Elizondo,ignacio65@unimet.edu.ve
-listener,afa1078a-ea67-4a78-bdae-2b1adae34e61,RubÈn FarÌas MÈndez,ruben71@unimet.edu.ve
-listener,c77072e4-48a9-43d4-b024-b30b2143b92a,Pablo EchevarrÌa Alvarado,pablo_echevarriaalvarado@unimet.edu.ve
+listener,afa1078a-ea67-4a78-bdae-2b1adae34e61,Rub√©n Far√≠as M√©ndez,ruben71@unimet.edu.ve
+listener,c77072e4-48a9-43d4-b024-b30b2143b92a,Pablo Echevarr√≠a Alvarado,pablo_echevarriaalvarado@unimet.edu.ve
 musician,4197626b-363c-4473-a0af-55fc4d73bc93,Amalia ,amalia89@unimet.edu.ve
 listener,6ee6bfae-8947-4b3b-9eb6-fc41ee68e951,Barbara Ibarra Osorio,barbara_ibarraosorio@unimet.edu.ve
 musician,edda7ec3-ab83-430d-83ab-c7d08c57c535,Sergio ,sergio.nevarezortega@unimet.edu.ve
 listener,3dd9def2-8823-49f4-bd58-320240325e37,Anita Vergara Fierro,anita.vergarafierro@unimet.edu.ve
 musician,e4962e36-e6f0-413b-81e7-14fbff494e39,Gabriela ,gabriela11@unimet.edu.ve
-listener,6c62ee8b-359c-4a21-acff-4b4fcc061dfc,Carlota Mesa DomÌnguez,carlota17@unimet.edu.ve
+listener,6c62ee8b-359c-4a21-acff-4b4fcc061dfc,Carlota Mesa Dom√≠nguez,carlota17@unimet.edu.ve
 listener,b5dfdf2c-d825-47d1-b5bc-c0953b4fc535,Magdalena Peralta Alba,magdalena.peraltaalba17@unimet.edu.ve
-musician,0d64d624-9391-48d1-b304-87c7e5fcba07,MarÌa Teresa ,mariateresa.delacruzcantu@unimet.edu.ve
+musician,0d64d624-9391-48d1-b304-87c7e5fcba07,Mar√≠a Teresa ,mariateresa.delacruzcantu@unimet.edu.ve
 musician,a3e8fe48-52e4-4ff1-b791-640a86cc61c6,Adriana ,adriana.camarillocampos58@unimet.edu.ve
-musician,934d530e-10e1-4616-add5-555b556879d3,¡ngela ,angela_porrasrosas@unimet.edu.ve
-listener,6ec20eee-6b2a-45ae-8a6c-ea3c224307ca,Tom·s SolÌs Colunga,tomas0@unimet.edu.ve
-musician,97cba1b0-5d1f-4daa-bb81-0b536fcfab3c,RamÛn ,ramon17@unimet.edu.ve
+musician,934d530e-10e1-4616-add5-555b556879d3,√Ångela ,angela_porrasrosas@unimet.edu.ve
+listener,6ec20eee-6b2a-45ae-8a6c-ea3c224307ca,Tom√°s Sol√≠s Colunga,tomas0@unimet.edu.ve
+musician,97cba1b0-5d1f-4daa-bb81-0b536fcfab3c,Ram√≥n ,ramon17@unimet.edu.ve
 listener,2017867f-e49c-4bc6-a32c-f8e87aa96afb,Blanca Rivero Fajardo,blanca_riverofajardo2@unimet.edu.ve
 musician,c1143b59-f6ad-4e21-9981-86e8e54cb786,Francisca ,francisca.teranesquibel28@unimet.edu.ve
 listener,97c59402-2914-4e7a-aece-f37a3e7332ca,Salvador Reyes Gamboa,salvador_reyesgamboa@unimet.edu.ve
 musician,230dbadd-31b1-4fe3-afd7-aba201853969,Sergio ,sergio_oroscocastellanos@unimet.edu.ve
-listener,1438f9db-0704-4ebb-85ab-d42e80f07054,”scar ColÛn Villalobos,oscar2@unimet.edu.ve
+listener,1438f9db-0704-4ebb-85ab-d42e80f07054,√ìscar Col√≥n Villalobos,oscar2@unimet.edu.ve
 musician,f367f86a-3a15-4868-9612-c30e47d0d59d,Homero ,homero16@unimet.edu.ve
 musician,6f31df24-2619-4757-abd5-6d910429d303,Armando ,armando_acostapulido@unimet.edu.ve
 listener,25848e8d-086d-4df3-a030-7a7d13d0d60b,Vicente Orellana Melgar,vicente.orellanamelgar70@unimet.edu.ve
 musician,9373772c-862e-467e-abd9-0c7627245b48,Estela ,estela.segoviaharo66@unimet.edu.ve
 musician,48d6c252-2cd8-4e3d-afdb-72b2895f0bbe,Teodoro ,teodoro_uriasbarragan@unimet.edu.ve
-listener,0c721a6b-ab1c-488a-80cc-d50363291453,Silvia Pedroza ConcepciÛn,silvia.pedrozaconcepcion32@unimet.edu.ve
+listener,0c721a6b-ab1c-488a-80cc-d50363291453,Silvia Pedroza Concepci√≥n,silvia.pedrozaconcepcion32@unimet.edu.ve
 musician,317698ff-3edf-4fa6-8875-aab7c8864be8,Caridad ,caridad.cejarosales50@unimet.edu.ve
 musician,224cd67f-e70d-4bc5-855e-a6432e4eb2f6,Ariadna ,ariadna_bernalperales@unimet.edu.ve
 musician,da018924-2464-44a6-88e3-1fdffd620f89,Alejandro ,alejandro.sanabriaramos32@unimet.edu.ve
 musician,545ff553-a193-434e-8b23-cd3179353554,Magdalena ,magdalena_chavezoquendo49@unimet.edu.ve
 listener,eba20cbe-ff61-4e4f-a718-ee229a3f847f,Eduardo Ojeda Matos,eduardo.ojedamatos90@unimet.edu.ve
-listener,cd583dee-bfce-448d-aa2a-68e0ef447532,Miguel ¡ngel Preciado Molina,miguelangel43@unimet.edu.ve
+listener,cd583dee-bfce-448d-aa2a-68e0ef447532,Miguel √Ångel Preciado Molina,miguelangel43@unimet.edu.ve
 musician,699c0453-ecbe-4885-9564-9850605460d0,Gerardo ,gerardo.parramaldonado12@unimet.edu.ve
-listener,01d79526-a40c-4817-99f0-8c2cd74d185f,MarÌa Eugenia Gracia Solorzano,mariaeugenia.graciasolorzano5@unimet.edu.ve
+listener,01d79526-a40c-4817-99f0-8c2cd74d185f,Mar√≠a Eugenia Gracia Solorzano,mariaeugenia.graciasolorzano5@unimet.edu.ve
 listener,f3875da5-de2b-4f4a-aa03-03e830dffcb5,Mario Amador Alfaro,mario3@unimet.edu.ve
 musician,10da8c11-9256-4ddf-af03-094bacdbff15,Julia ,julia.leivaochoa65@unimet.edu.ve
-listener,609b392e-4931-41f3-a8ff-806243628682,Adriana GÛmez Sosa,adriana56@unimet.edu.ve
+listener,609b392e-4931-41f3-a8ff-806243628682,Adriana G√≥mez Sosa,adriana56@unimet.edu.ve
 listener,b560ca32-9229-4f7a-b900-805a31e27503,Claudio Marrero Puga,claudio.marreropuga@unimet.edu.ve
 listener,66bf535d-3117-4042-90a5-9935f7aa609b,Magdalena Pantoja Adorno,magdalena.pantojaadorno@unimet.edu.ve
-musician,5238cada-5e81-49fc-8990-dedb70cda316,MarÌa Eugenia ,mariaeugenia_concepcionperalta@unimet.edu.ve
+musician,5238cada-5e81-49fc-8990-dedb70cda316,Mar√≠a Eugenia ,mariaeugenia_concepcionperalta@unimet.edu.ve
 musician,1e44eb4b-fc25-43e9-83ee-ccf2e41a33d3,Manuel ,manuel_guerrapena96@unimet.edu.ve
 musician,62d4ffa4-f8b5-4583-952e-8fa0180c25fd,Cristina ,cristina_gamboadiaz54@unimet.edu.ve
-listener,a0f83bd3-cbac-45da-9c59-6a223a71c74c,Homero LÛpez PatiÒo,homero_lopezpatino14@unimet.edu.ve
+listener,a0f83bd3-cbac-45da-9c59-6a223a71c74c,Homero L√≥pez Pati√±o,homero_lopezpatino14@unimet.edu.ve
 musician,9b5404a7-9129-4aff-ab88-542fb3453025,Felipe ,felipe94@unimet.edu.ve
-musician,5321d4d2-1437-4e65-8ecf-367911c9c5dd,MarÌa Eugenia ,mariaeugenia.ybarrasantillan@unimet.edu.ve
+musician,5321d4d2-1437-4e65-8ecf-367911c9c5dd,Mar√≠a Eugenia ,mariaeugenia.ybarrasantillan@unimet.edu.ve
 musician,d90d5301-9596-4a54-bb54-298313699df3,Alicia ,alicia70@unimet.edu.ve
 listener,9df35d87-a337-4c76-931d-809b8fe162c5,Diego Manzanares Malave,diego58@unimet.edu.ve
 listener,9432121d-7c1a-4a29-8de8-b2ecb6e7b555,Guadalupe Arroyo Loera,guadalupe_arroyoloera0@unimet.edu.ve
 musician,501524bc-79a8-43f9-98c3-ae2f0cec2d93,Patricio ,patricio_lopezvaldivia18@unimet.edu.ve
-listener,a4cfdd90-81b5-404c-9a83-9511d3949669,MarÌa Cristina Melgar Aguilar,mariacristina27@unimet.edu.ve
-listener,ade815e1-3e19-42e8-a9e6-3c12fd0dbec6,Raquel BaÒuelos Moreno,raquel_banuelosmoreno@unimet.edu.ve
+listener,a4cfdd90-81b5-404c-9a83-9511d3949669,Mar√≠a Cristina Melgar Aguilar,mariacristina27@unimet.edu.ve
+listener,ade815e1-3e19-42e8-a9e6-3c12fd0dbec6,Raquel Ba√±uelos Moreno,raquel_banuelosmoreno@unimet.edu.ve
 listener,05685262-ef75-4e3e-981d-680b04083862,Emilia Blanco Candelaria,emilia.blancocandelaria@unimet.edu.ve
 listener,8880acdb-20da-4588-990f-a327d73d633d,Alfredo Gil Guerra,alfredo_gilguerra29@unimet.edu.ve
-listener,0fdccf74-df53-41cf-8af5-48070dbda7ff,Esperanza Hern·ndez Garay,esperanza_hernandezgaray@unimet.edu.ve
+listener,0fdccf74-df53-41cf-8af5-48070dbda7ff,Esperanza Hern√°ndez Garay,esperanza_hernandezgaray@unimet.edu.ve
 musician,98b6512a-2f02-494a-9e17-59cc002cba77,Federico ,federico38@unimet.edu.ve
 musician,e54f4585-5302-41d7-96b3-d483abbaefc3,Gustavo ,gustavo.camachocovarrubias@unimet.edu.ve
-musician,a2e5f5ad-44e4-4925-894a-9b08f3dff115,BenjamÌn ,benjamin_santanaayala38@unimet.edu.ve
-listener,91c38d6c-4250-4240-97f7-069783ed4c23,SofÌa Grijalva S·enz,sofia.grijalvasaenz23@unimet.edu.ve
+musician,a2e5f5ad-44e4-4925-894a-9b08f3dff115,Benjam√≠n ,benjamin_santanaayala38@unimet.edu.ve
+listener,91c38d6c-4250-4240-97f7-069783ed4c23,Sof√≠a Grijalva S√°enz,sofia.grijalvasaenz23@unimet.edu.ve
 listener,bc58a11e-6e14-49ad-8a4e-69817e25e23b,Javier Bustos Pizarro,javier.bustospizarro@unimet.edu.ve
 musician,80ffe630-066f-4b7f-a8a8-67f1fb9d16e5,Berta ,berta.castanedarosales@unimet.edu.ve
 musician,fba397b5-dc00-41c1-93a1-387f7458901f,Estela ,estela.villalobosroldan@unimet.edu.ve
-listener,fa0e35c5-b620-404a-9e0e-10b3ad877681,Sergio MascareÒas Bustos,sergio_mascarenasbustos@unimet.edu.ve
+listener,fa0e35c5-b620-404a-9e0e-10b3ad877681,Sergio Mascare√±as Bustos,sergio_mascarenasbustos@unimet.edu.ve
 listener,bd329865-1db8-4bfc-95b3-9fc7ab58a654,Javier Nieto Aponte,javier.nietoaponte@unimet.edu.ve
-listener,b6a82cdf-b17d-4f4a-ada2-c9cf0ecabb0f,MarÌa Cristina Aguilar G·mez,mariacristina.aguilargamez17@unimet.edu.ve
+listener,b6a82cdf-b17d-4f4a-ada2-c9cf0ecabb0f,Mar√≠a Cristina Aguilar G√°mez,mariacristina.aguilargamez17@unimet.edu.ve
 musician,b66500fc-7c15-4a0b-be05-f72c1dfad562,Vicente ,vicente37@unimet.edu.ve
-musician,567bddb1-a968-4b08-9843-185867e59415,JoaquÌn ,joaquin.armijoceballos38@unimet.edu.ve
+musician,567bddb1-a968-4b08-9843-185867e59415,Joaqu√≠n ,joaquin.armijoceballos38@unimet.edu.ve
 musician,def87bb1-48cc-4f80-afb2-7cd5bc7156cd,Marcos ,marcos.rodartegaitan@unimet.edu.ve
 listener,5aceb7bd-56e9-4751-ace9-0267db3d347a,Gustavo Carmona Moreno,gustavo_carmonamoreno79@unimet.edu.ve
-musician,5735e975-7681-4aa1-82e6-e7fb00a1a59b,”scar ,oscar39@unimet.edu.ve
+musician,5735e975-7681-4aa1-82e6-e7fb00a1a59b,√ìscar ,oscar39@unimet.edu.ve
 listener,9fa2d2fc-7def-4bae-8432-20927ff72a24,Elvira Zaragoza Ceja,elvira.zaragozaceja@unimet.edu.ve
-listener,68700fe3-c29f-4677-a9dd-95acce08aea9,Silvia AlanÌz MuÒiz,silvia77@unimet.edu.ve
+listener,68700fe3-c29f-4677-a9dd-95acce08aea9,Silvia Alan√≠z Mu√±iz,silvia77@unimet.edu.ve
 musician,69fed1fd-57ab-4e09-b301-552413a7a11b,Rafael ,rafael.valenzuelaharo@unimet.edu.ve
 musician,28070ebe-74cc-4488-8491-8fb928ec2f45,Barbara ,barbara.peraltaalmaraz@unimet.edu.ve
 musician,24617980-5320-44c4-824d-b466fe386b0e,Anita ,anita_pelayoquiroz17@unimet.edu.ve
-listener,f78b360f-8a0f-4aad-abc4-16a0cf9dc34c,Nicol·s MatÌas Tamez,nicolas.matiastamez@unimet.edu.ve
+listener,f78b360f-8a0f-4aad-abc4-16a0cf9dc34c,Nicol√°s Mat√≠as Tamez,nicolas.matiastamez@unimet.edu.ve
 listener,5229912e-8951-4456-b93f-c02977080f8c,Conchita Matos Betancourt,conchita.matosbetancourt86@unimet.edu.ve
-listener,5aa9130b-a1eb-42c2-84ca-1039d71a3fea,MarÌa del Carmen DelrÌo M·rquez,mariadelcarmen26@unimet.edu.ve
+listener,5aa9130b-a1eb-42c2-84ca-1039d71a3fea,Mar√≠a del Carmen Delr√≠o M√°rquez,mariadelcarmen26@unimet.edu.ve
 musician,7f3d8c88-b9ac-44d6-83cc-145f3c0cc5c6,Carolina ,carolina_abregohidalgo@unimet.edu.ve
 musician,5cf40b44-1036-4b63-a29f-fee7d4930258,Arturo ,arturo92@unimet.edu.ve
 musician,1f4e3f17-ab74-40e7-9038-70c9eb725b2a,Marcela ,marcela.soteloherrera@unimet.edu.ve
-listener,11d5dba3-7c1c-4823-ac7a-e34c0b5cc7aa,Marcos Guardado Oliv·rez,marcos_guardadoolivarez46@unimet.edu.ve
-listener,9b0706fa-014d-4af1-8344-486706217659,Cristina AragÛn Escamilla,cristina79@unimet.edu.ve
+listener,11d5dba3-7c1c-4823-ac7a-e34c0b5cc7aa,Marcos Guardado Oliv√°rez,marcos_guardadoolivarez46@unimet.edu.ve
+listener,9b0706fa-014d-4af1-8344-486706217659,Cristina Arag√≥n Escamilla,cristina79@unimet.edu.ve
 musician,e51c9a56-dc68-46d1-bfe4-651e05afd70a,Marta ,marta.cavazosbecerra@unimet.edu.ve
 musician,26994830-e49a-47dc-9011-bae24a5c0926,Irene ,irene51@unimet.edu.ve
 musician,c1f6708a-f855-4d2f-a7ad-c5afc049136c,Manuel ,manuel_apodacazelaya@unimet.edu.ve
-musician,4a6ceccb-c8aa-4dc7-8497-3f9fee6870ab,MarÌa del Carmen ,mariadelcarmen_saavedravergara12@unimet.edu.ve
-181f566c-bb2b-4720-bb69-91b615e7d91f,marcos,marcos@gmail.com,musician
+musician,4a6ceccb-c8aa-4dc7-8497-3f9fee6870ab,Mar√≠a del Carmen ,mariadelcarmen_saavedravergara12@unimet.edu.ve
+ef8860e9-afdd-4754-97fb-9ec53efe4a38,marcos,marcos@correo.com,musician
