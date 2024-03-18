@@ -1,6 +1,18 @@
 import requests
 import uuid
 import re
+
+# Mapeo de tipos de usuario
+tipo_usuario_map = {
+    "Escucha": "listener",
+    "Músico": "musician"
+}
+
+# Mapeo inverso de tipos de usuario
+tipo_usuario_map_inverso = {
+    "listener": "Escucha",
+    "musician": "Músico"
+}
 class Usuario:
     def __init__(self, nombre, correo, tipo_usuario):
         self.id = str(uuid.uuid4())
@@ -57,8 +69,9 @@ def get_users():
     else:
         usuarios_json = response.json()
         for usuario in usuarios_json:
-            usuarios.append(Usuario(usuario["name"], usuario["email"], usuario["type"]))
-            
+            # Verificar si el usuario ya existe en la lista
+            if not any(u.correo == usuario["email"] for u in usuarios):
+                usuarios.append(Usuario(usuario["name"], usuario["email"], usuario["type"]))
 
 
 albums = []
@@ -76,8 +89,10 @@ def get_albums():
     else:
         albums_json = response.json()
         for album in albums_json:
-            tracklist = [Track(**track) for track in album["tracklist"]]
-            albums.append(Album(album["id"], album["name"], album["description"], album["cover"], album["published"], album["genre"], album["artist"], tracklist))
+            # Verificar si el álbum ya existe en la lista
+            if not any(a.id == album["id"] for a in albums):
+                tracklist = [Track(**track) for track in album["tracklist"]]
+                albums.append(Album(album["id"], album["name"], album["description"], album["cover"], album["published"], album["genre"], album["artist"], tracklist))
 
 
 playlists = []
@@ -95,8 +110,9 @@ def get_playlists():
     else:
         playlists_json = response.json()
         for playlist in playlists_json:
-            playlists.append(Playlist(playlist["id"], playlist["name"], playlist["description"], playlist["creator"], playlist["tracks"]))
-
+            # Verificar si la playlist ya existe en la lista
+            if not any(p.id == playlist["id"] for p in playlists):
+                playlists.append(Playlist(playlist["id"], playlist["name"], playlist["description"], playlist["creator"], playlist["tracks"]))
 
 
 def guardar_usuarios():
@@ -155,17 +171,77 @@ def cargar_playlists():
     except FileNotFoundError:
         pass
 
-
 def crear_playlist(usuario):
     print("Por favor, introduce los detalles de la playlist:")
     name = input("Nombre: ")
     description = input("Descripción: ")
     creator = usuario.nombre
-    tracks = input("Pistas (separadas por comas): ").split(',')
+
+    tracks = []
+    while True:
+        print("1. Añadir canción por nombre")
+        print("2. Añadir canciones de un artista")
+        print("3. Terminar y guardar playlist")
+        opcion = input("Por favor, selecciona una opción: ")
+
+        if opcion == "1":
+            termino_busqueda = input("Introduce el nombre de la canción: ")
+            resultados = buscador_playlist("cancion", termino_busqueda)
+            if resultados:
+                print("Canciones encontradas:")
+                for i, (nombre, id) in enumerate(resultados, 1):
+                    print(f"{i}. {nombre}")
+                indice = int(input("Selecciona el número de la canción que quieres añadir: ")) - 1
+                tracks.append(resultados[indice][1])  # Añadimos el id de la canción
+            else:
+                print("No se encontró ninguna canción con ese nombre.")
+        elif opcion == "2":
+            termino_busqueda = input("Introduce el nombre del artista: ")
+            resultados = buscador_playlist("artista", termino_busqueda)
+            if resultados:
+                print("Canciones encontradas:")
+                for i, (nombre, id) in enumerate(resultados, 1):
+                    print(f"{i}. {nombre}")
+                indices = input("Selecciona los números de las canciones que quieres añadir (separados por comas): ").split(',')
+                for indice in indices:
+                    tracks.append(resultados[int(indice) - 1][1])  # Añadimos el id de la canción
+            else:
+                print("No se encontró ninguna canción de ese artista.")
+        elif opcion == "3":
+            break
+        else:
+            print("Opción no válida. Por favor, intenta de nuevo.")
+
     playlist = Playlist(str(uuid.uuid4()), name, description, creator, tracks)
     playlists.append(playlist)
     guardar_playlists()  # Guardar las playlists después de crear una nueva
     print("Playlist creada y guardada exitosamente!")
+
+
+
+def buscador_playlist(tipo, termino):
+    resultados = []
+    if tipo == "cancion":
+        for album in albums:
+            for track in album.tracklist:
+                if termino.lower() in track.name.lower():
+                    # Agregamos el nombre y el id de la canción a los resultados
+                    resultados.append((track.name, track.id))
+    elif tipo == "artista":
+        for album in albums:
+            if termino.lower() in album.artist.lower():
+                for track in album.tracklist:
+                    # Agregamos el nombre y el id de la canción a los resultados
+                    resultados.append((track.name, track.id))
+    else:
+        print("Tipo de búsqueda no válido. Los tipos válidos son 'cancion' y 'artista'.")
+        return None
+
+    if not resultados:
+        print(f"No se encontró {tipo} con el nombre '{termino}'.")
+        return None
+
+    return resultados
 
 
 def cargar_usuarios():
@@ -201,7 +277,6 @@ def crear_album(usuario):
     print("Álbum creado y guardado exitosamente!")
 
 
-
 def registrar_usuario_interactivo():
     print("Por favor, llena los siguientes campos para registrarte:")
     nombre = input("Nombre (o Nombre artístico): ")
@@ -230,7 +305,10 @@ def registrar_usuario_interactivo():
         print("Opción no válida. Por favor, intenta de nuevo.")
         return None
 
-    nuevo_usuario = Usuario(nombre, correo, tipo_usuario)
+    # Aquí usamos el mapeo para guardar el tipo de usuario correcto
+    tipo_usuario_api = tipo_usuario_map[tipo_usuario]
+
+    nuevo_usuario = Usuario(nombre, correo, tipo_usuario_api)
     usuarios.append(nuevo_usuario)
     guardar_usuarios()
     return nuevo_usuario
@@ -245,11 +323,11 @@ def iniciar_sesion():
     return None
 
 
-def buscar_usuario(nombre):
-    for usuario in usuarios:
-        if usuario.nombre == nombre:
-            return usuario
-    return None
+# def buscar_usuario(nombre):
+#     for usuario in usuarios:
+#         if usuario.nombre == nombre:
+#             return usuario
+#     return None
 
 def cambiar_informacion(usuario):
     print("Por favor, llena los siguientes campos para actualizar tu información:")
@@ -279,9 +357,12 @@ def cambiar_informacion(usuario):
         print("Opción no válida. Por favor, intenta de nuevo.")
         return
 
+    # Aquí usamos el mapeo para guardar el tipo de usuario correcto
+    tipo_usuario_api = tipo_usuario_map[tipo_usuario]
+
     usuario.nombre = nombre
     usuario.correo = correo
-    usuario.tipo_usuario = tipo_usuario
+    usuario.tipo_usuario = tipo_usuario_api
     guardar_usuarios()
 
 def borrar_datos(usuario):
@@ -312,81 +393,113 @@ def ver_perfil(usuario):
             return
         else:
             print("Opción no válida. Por favor, intenta de nuevo.")
-        
+ 
+
+def buscar_cancion_por_id(id):
+    for album in albums:
+        for track in album.tracklist:
+            if track.id == id:
+                return track.name, track.link
+    return None
+
 def buscar(tipo, termino):
-    if tipo == "musico":
+    resultados = []
+    if tipo == "usuario":
         for usuario in usuarios:
-            if usuario.nombre.lower() == termino.lower() and usuario.tipo_usuario == "Músico":
-                return usuario
+            if termino.lower() in usuario.nombre.lower():
+                # Agregamos el usuario a la lista de resultados
+                resultados.append((usuario.nombre, tipo_usuario_map_inverso[usuario.tipo_usuario]))
+
     elif tipo == "album":
         for album in albums:
-            if album.name.lower() == termino.lower():
-                return album
+            if termino.lower() in album.name.lower():
+                resultados.append(album)
+                
     elif tipo == "cancion":
         for album in albums:
             for track in album.tracklist:
-                if track.name.lower() == termino.lower():
-                    return track
+                if termino.lower() in track.name.lower():
+                    resultados.append((track.name, track.link))
+
+   
+    
     elif tipo == "playlist":
         for playlist in playlists:
-            if playlist.name.lower() == termino.lower():
-                return playlist
+            if termino.lower() in playlist.name.lower():
+                # Creamos una lista para guardar los nombres de las canciones
+                nombres_canciones = []
+                for id_cancion in playlist.tracks:
+                    nombre_cancion = buscar_cancion_por_id(id_cancion)
+                    if nombre_cancion is not None:
+                        nombres_canciones.append(nombre_cancion)
+                # Agregamos la playlist y los nombres de las canciones a los resultados
+                resultados.append((playlist.name, nombres_canciones))
+
     else:
-        print("Tipo de búsqueda no válido. Los tipos válidos son 'musico', 'album', 'cancion' y 'playlist'.")
+        print("Tipo de búsqueda no válido. Los tipos válidos son 'usuario', 'album', 'cancion' y 'playlist'.")
         return None
 
-    print(f"No se encontró {tipo} con el nombre '{termino}'.")
-    return None
+    if not resultados:
+        print(f"No se encontró {tipo} con el nombre '{termino}'.")
+        return None
 
+    return resultados
 
 def menu_usuario(usuario):
     while True:
         print("Bienvenido a METROTIFY, " + usuario.nombre)
-        print("1. Buscar usuario")
-        print("2. Ver perfil")
-        if usuario.tipo_usuario == "Músico":
-            print("3. Crear álbum")
-        elif usuario.tipo_usuario == "Escucha":
-            print("3. Crear playlist")
-        print("4. Buscar")
-        print("5. Salir")
+        print("1. Ver perfil")
+        
+        # Aquí usamos el mapeo inverso para hacer la comparación correcta
+        if tipo_usuario_map_inverso[usuario.tipo_usuario] == "Músico":
+            print("2. Crear álbum")
+        elif tipo_usuario_map_inverso[usuario.tipo_usuario] == "Escucha":
+            print("2. Crear playlist")
+        print("3. Buscar")
+        print("4. Salir")
         opcion = input("Por favor, selecciona una opción: ")
-
+     
         if opcion == "1":
-            nombre = input("Introduce el nombre del usuario que quieres buscar: ")
-            usuario_buscado = buscar_usuario(nombre)
-            if usuario_buscado:
-                print("Usuario encontrado:")
-                print(usuario_buscado)
-            else:
-                print("Usuario no encontrado.")
-        elif opcion == "2":
             ver_perfil(usuario)
-        elif opcion == "3":
-            if usuario.tipo_usuario == "Músico":
+        elif opcion == "2":
+            if tipo_usuario_map_inverso[usuario.tipo_usuario] == "Músico":
                 crear_album(usuario)
-            elif usuario.tipo_usuario == "Escucha":
+            elif tipo_usuario_map_inverso[usuario.tipo_usuario] == "Escucha":
                 crear_playlist(usuario)
-        elif opcion == "4":
-            tipo_busqueda = input("Introduce el tipo de búsqueda (musico, album, cancion, playlist): ")
+        elif opcion == "3":
+            tipo_busqueda = input("Introduce el tipo de búsqueda (usuario, album, cancion, playlist): ")
             termino_busqueda = input("Introduce el término de búsqueda: ")
-            resultado = buscar(tipo_busqueda, termino_busqueda)
-            if resultado:
+            resultados = buscar(tipo_busqueda, termino_busqueda)
+            if resultados:
                 print(f"{tipo_busqueda} encontrado:")
-                print(resultado)
+                if tipo_busqueda == "album":
+                    for i, album in enumerate(resultados, 1):
+                        print(f"{i}. {album.name}")
+                    indice = int(input("Selecciona el número del álbum que quieres ver: ")) - 1
+                    album_seleccionado = resultados[indice]
+                    print("Canciones en el álbum seleccionado:")
+                    for track in album_seleccionado.tracklist:
+                        print((track.name, track.link))
+                else:
+                    print("Este es el resultado:", resultados)
             else:
                 print(f"{tipo_busqueda} no encontrado.")
-        elif opcion == "5":
+        elif opcion == "4":
             print("Has cerrado tu sesión. ¡Hasta luego!")
             break
         else:
             print("Opción no válida. Por favor, intenta de nuevo.")
 
+            
+            
 def main():
     cargar_usuarios()
     cargar_albums()
+    cargar_playlists()
     get_users()
     get_albums()
+    get_playlists()
+    
     usuario = None  # Variable para rastrear el usuario actual
 
     while True:
@@ -399,10 +512,10 @@ def main():
 
             if opcion == "1":
                 usuario = iniciar_sesion()
-                print(usuario)
+               
             elif opcion == "2":
                 usuario = registrar_usuario_interactivo()
-                print(usuario)
+            
             elif opcion == "3":
                 print("Gracias por usar METROTIFY. ¡Hasta luego!")
                 break
